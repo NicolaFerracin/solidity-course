@@ -50,7 +50,7 @@ describe("Lottery", () => {
         .send({ from: accounts[1], value: web3.utils.toWei("0.01", "ether") });
       assert(false);
     } catch (e) {
-      assert(e);
+      assert.notEqual("ERR_ASSERTION", e.code);
     }
   });
 
@@ -59,7 +59,7 @@ describe("Lottery", () => {
       await lottery.methods.pickWinner().send({ from: accounts[1] });
       assert(false);
     } catch (e) {
-      assert(e);
+      assert.notEqual("ERR_ASSERTION", e.code);
     }
   });
 
