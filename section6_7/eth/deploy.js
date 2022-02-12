@@ -1,7 +1,7 @@
-require("dotenv").config();
+require("dotenv").config({ path: ".env.local" });
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const Web3 = require("web3");
-const factoryRaw = require("../eth/build/Factory.json");
+const factoryRaw = require("./build/Factory.json");
 
 const {
   abi: factoryAbi,

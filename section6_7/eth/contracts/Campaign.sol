@@ -27,7 +27,7 @@ contract Campaign {
     uint public minContribution;
     mapping(address => bool) public approvers;
     uint public approversCount;
-    uint numRequests;
+    uint public numRequests;
     mapping(uint => Request) public requests;
 
 
@@ -68,7 +68,7 @@ contract Campaign {
         request.approvalCount++;
     }
 
-    function finalizeRequest(uint _index) public onlyOwner {
+    function finalizeRequest(uint _index) public payable onlyOwner {
         Request storage request = requests[_index];
         require(!request.complete, "The request was already finalized");
         require(request.approvalCount > (approversCount / 2), "The request has to be approved by at least half the contributors");
